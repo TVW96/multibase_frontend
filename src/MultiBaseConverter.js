@@ -21,7 +21,9 @@ const MultiBaseConverter = () => {
         } catch (err) {
             // Check if error response exists and has data
             if (err.response && err.response.data && err.response.data.error) {
+                const errorMessage = "'ERROR CODE 400'";
                 setError(err.response.data.error);
+                window.alert(errorMessage);
             } else {
                 // Fallback error message
                 setError('An unexpected error occurred.');
@@ -33,12 +35,12 @@ const MultiBaseConverter = () => {
 
     return (
         <div className={"App"}>
-            <h1>Multi-Base Number Converter</h1>
             <div className={"container"}>
+                <h1>Multi-Base Number Converter</h1>
                 <div className={"input-container"}>
                     <div className={"base-container"}>
-                        {result && <p style={{ color: 'white', fontSize: '24px', textAlign:'center' }}>Result: {result}</p>}
-                        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+                        {result && <p className={"result"}>Result: {result}</p>}
+                        {error && <p className={"error"}>{error}</p>}
                     </div>
                     <h4>Number to convert:</h4>
                     <input
