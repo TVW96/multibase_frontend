@@ -36,8 +36,8 @@ const MultiBaseConverter = () => {
     return (
         <div className={"App"}>
             <div className={"container"}>
-                <h1>Multi-Base Number Converter</h1>
                 <div className={"input-container"}>
+                    <h1>Base Number Converter</h1>
                     <div className={"base-container"}>
                         {result && <p className={"result"}>Result: {result}</p>}
                         {error && <p className={"error"}>{error}</p>}
