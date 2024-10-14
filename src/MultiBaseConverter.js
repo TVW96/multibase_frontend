@@ -9,9 +9,11 @@ const MultiBaseConverter = () => {
     const [result, setResult] = useState('');
     const [error, setError] = useState('');
 
+    const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000';
+
     const handleConvert = async () => {
         try {
-            const response = await axios.post('http://127.0.0.1:5000/api/convert', {
+            const response = await axios.post(`${API_URL}/api/convert`, {
                 number,
                 from_base: fromBase,
                 to_base: toBase,
@@ -19,18 +21,17 @@ const MultiBaseConverter = () => {
             setResult(response.data.result);
             setError('');
         } catch (err) {
-            // Check if error response exists and has data
             if (err.response && err.response.data && err.response.data.error) {
                 const errorMessage = "'ERROR CODE 400'";
                 setError(err.response.data.error);
                 window.alert(errorMessage);
             } else {
-                // Fallback error message
                 setError('An unexpected error occurred.');
             }
             setResult('');
         }
     };
+
 
 
     return (
